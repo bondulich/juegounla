@@ -101,7 +101,7 @@ while True:
 	#personaje saltando
 	if(personaje.saltando==True):
 		if(personaje.sube==True):
-			if(personaje.y>100):
+			if(personaje.y>70.3):
 				personaje.y -= velocidad + (personaje.y / 500)
 			else:
 				personaje.sube=False
