@@ -45,7 +45,7 @@ class Personaje:
 pygame.init()
 
 #CONFIGURACIONES
-anchoVentana, altoVentana = 600, 400
+anchoVentana, altoVentana = 800, 400
 ColorFondo = (50,121,0)
 Color = (120, 120, 120)
 personajeImg = pygame.image.load("texturas/personaje.png")
@@ -101,7 +101,7 @@ while True:
 	#personaje saltando
 	if(personaje.saltando==True):
 		if(personaje.sube==True):
-			if(personaje.y>70.3):
+			if(personaje.y>50):
 				personaje.y -= velocidad + (personaje.y / 500)
 			else:
 				personaje.sube=False
