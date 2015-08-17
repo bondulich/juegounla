@@ -1,5 +1,5 @@
 # COLOR RGB rojo, verde, azul (0-255)
-import pygame, sys, funciones
+import pygame, sys
 
 from pygame.locals import *
 from random import randint
