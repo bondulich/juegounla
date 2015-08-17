@@ -114,5 +114,3 @@ while True:
 	dibujaTerreno()
 
 	pygame.display.update()
-
-# svn de mierda
