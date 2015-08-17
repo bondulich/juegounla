@@ -26,7 +26,7 @@ class Obstaculo:
 
 class Personaje:
 	def __init__(self):
-		self.y = 230
+		self.y = 180
 		self.saltando = False
 		self.sube=True
 
@@ -108,8 +108,8 @@ while True:
 
 		elif(personaje.sube == False):
 			personaje.y += velocidad + (personaje.y / 500)
-			if(personaje.y>=230):
-				personaje.y=230
+			if(personaje.y>=180):
+				personaje.y=180
 				personaje.saltar(False)
 	
 	#Impresion de objetos en el juego		
