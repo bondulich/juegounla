@@ -51,6 +51,7 @@ Color = (120, 120, 120)
 personajeImg = pygame.image.load("texturas/personaje.png")
 personajeImg_saltando = pygame.image.load("texturas/personaje_saltando.png")
 terreno = pygame.image.load("texturas/terreno.jpg")
+fondoImg = pygame.image.load("texturas/fondo.jpg")
 fuente = pygame.font.Font(None,30)
 velocidad = 0.5
 
@@ -67,8 +68,9 @@ posXobj = anchoVentana
 #blcle principal
 while True:
 	#cambia color fondo
-	ventana.fill(ColorFondo)
-
+	#ventana.fill(ColorFondo)
+	ventana.blit(fondoImg, (0,0))
+	
 	#puntaje
 	tiempo = pygame.time.get_ticks() / 100		
 	miTexto = fuente.render("Puntaje: " + str(tiempo),0,(255,100,100))
@@ -115,6 +117,6 @@ while True:
 	#Impresion de objetos en el juego		
 	obstaculo.mover(posXobj)
 	personaje.dibujar()
-	dibujaTerreno()
+	#dibujaTerreno()
 
 	pygame.display.update()
