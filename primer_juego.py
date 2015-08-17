@@ -31,7 +31,10 @@ class Personaje:
 		self.sube=True
 
 	def dibujar(self):
-		ventana.blit(personajeImg, (50, self.y))
+		if(self.saltando==True):
+			ventana.blit(personajeImg_saltando, (50, self.y))
+		else:
+			ventana.blit(personajeImg, (50, self.y))
 
 	def saltar(self, opc):
 		self.saltando = opc
@@ -46,6 +49,7 @@ anchoVentana, altoVentana = 600, 400
 ColorFondo = (50,121,0)
 Color = (120, 120, 120)
 personajeImg = pygame.image.load("texturas/personaje.png")
+personajeImg_saltando = pygame.image.load("texturas/personaje_saltando.png")
 terreno = pygame.image.load("texturas/terreno.jpg")
 fuente = pygame.font.Font(None,30)
 velocidad = 0.5
