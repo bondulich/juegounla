@@ -53,7 +53,7 @@ personajeImg_saltando = pygame.image.load("texturas/personaje_saltando.png")
 terreno = pygame.image.load("texturas/terreno.jpg")
 fondoImg = pygame.image.load("texturas/fondo.jpg")
 fuente = pygame.font.Font(None,30)
-velocidad = 0.5
+velocidad = 1.8
 
 #Defino ventana y titulo
 ventana = pygame.display.set_mode((anchoVentana, altoVentana))
@@ -70,7 +70,7 @@ while True:
 	#cambia color fondo
 	#ventana.fill(ColorFondo)
 	ventana.blit(fondoImg, (0,0))
-	
+
 	#puntaje
 	tiempo = pygame.time.get_ticks() / 100		
 	miTexto = fuente.render("Puntaje: " + str(tiempo),0,(255,100,100))
@@ -104,12 +104,12 @@ while True:
 	if(personaje.saltando==True):
 		if(personaje.sube==True):
 			if(personaje.y>50):
-				personaje.y -= velocidad + (personaje.y / 500)
+				personaje.y -= velocidad + (personaje.y / 200)
 			else:
 				personaje.sube=False
 
 		elif(personaje.sube == False):
-			personaje.y += velocidad + (personaje.y / 500)
+			personaje.y += velocidad + (personaje.y / 200)
 			if(personaje.y>=180):
 				personaje.y=180
 				personaje.saltar(False)
