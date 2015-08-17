@@ -17,9 +17,12 @@ class Obstaculo:
 	def __init__(self, alto):
 		self.alto = alto
 		self.visible = True
+		self.x=anchoVentana
 
-	def mover(self, x):
-		pygame.draw.rect(ventana, (255, 120, 5), (x,self.alto,30,100))
+	def mover(self):
+		self.rect = pygame.Rect(self.x,self.alto,30,100)
+		pygame.draw.rect(ventana, (255, 120, 5), self.rect)
+		#pygame.draw.rect(ventana, (255, 120, 5), (x,self.alto,30,100))
 
 	def ocultar(self):
 		self.visible=False
@@ -29,12 +32,20 @@ class Personaje:
 		self.y = 180
 		self.saltando = False
 		self.sube=True
+		self.vida = True
+
+		self.personajeImg = pygame.image.load("texturas/personaje.png")
+		self.personajeImg_saltando = pygame.image.load("texturas/personaje_saltando.png")
+
+		self.rect = self.personajeImg.get_rect()
+		self.rect.centerx = 50
+		self.rect.centery = self.y
 
 	def dibujar(self):
 		if(self.saltando==True):
-			ventana.blit(personajeImg_saltando, (50, self.y))
+			ventana.blit(self.personajeImg_saltando, (50, self.y))
 		else:
-			ventana.blit(personajeImg, (50, self.y))
+			ventana.blit(self.personajeImg, (50, self.y))
 
 	def saltar(self, opc):
 		self.saltando = opc
@@ -48,8 +59,7 @@ pygame.init()
 anchoVentana, altoVentana = 800, 400
 ColorFondo = (50,121,0)
 Color = (120, 120, 120)
-personajeImg = pygame.image.load("texturas/personaje.png")
-personajeImg_saltando = pygame.image.load("texturas/personaje_saltando.png")
+
 terreno = pygame.image.load("texturas/terreno.jpg")
 fondoImg = pygame.image.load("texturas/fondo.jpg")
 fuente = pygame.font.Font(None,30)
@@ -64,7 +74,6 @@ pygame.display.set_caption("Primer juego")
 obstaculo = Obstaculo(randint(300, 350))
 personaje = Personaje()
 
-posXobj = anchoVentana
 #blcle principal
 while True:
 	#cambia color fondo
@@ -91,14 +100,9 @@ while True:
 
 
 	#muestra obstaculos
-	if(posXobj<0):
-		obstaculo.ocultar()
-		posXobj=anchoVentana
-
-	if(obstaculo.visible==False):
+	if(obstaculo.x<=-50):
 		obstaculo = Obstaculo(randint(300, 350))
-
-	posXobj -= velocidad
+	obstaculo.x -= velocidad
 		
 	#personaje saltando
 	if(personaje.saltando==True):
@@ -115,7 +119,7 @@ while True:
 				personaje.saltar(False)
 	
 	#Impresion de objetos en el juego		
-	obstaculo.mover(posXobj)
+	obstaculo.mover()
 	personaje.dibujar()
 	#dibujaTerreno()
 
